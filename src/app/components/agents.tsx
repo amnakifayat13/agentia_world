@@ -6,7 +6,7 @@ const Agents = () => {
     top: `${Math.random() * 100}%`,
     left: `${Math.random() * 100}%`,
     animationDelay: `${Math.random() * 5}s`,
-    animationDuration: `${Math.random() * 10 + 5}s`, // Random duration between 5s and 15s
+    animationDuration: `${Math.random() * 10 + 5}s`, 
   }));
 
   return (

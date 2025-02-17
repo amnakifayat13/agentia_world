@@ -5,6 +5,7 @@ import Technology from "./components/technology";
 import Agents from "./components/agents";
 import Pricing from "./components/pricing";
 import Contact from "./components/contact";
+import Footer from "./components/footer";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <Agents/>
       <Pricing/>
       <Contact/>
+      <Footer/>
     </div>
   );
 }
