@@ -27,7 +27,7 @@ const MovingDots = () => {
           }}
         />
       ))}
-    <h1 className="mt-44  mb-6 text-2xl md:text-6xl font-extrabold bg-gradient-to-r from-yellow-400 via-gray-400 to-black bg-clip-text text-transparent text-center">
+    <h1 className="mt-24  mb-6 text-2xl md:text-6xl font-extrabold bg-gradient-to-r from-yellow-400 via-gray-400 to-black bg-clip-text text-transparent text-center">
  The Future of Agentic AI ~   Empower. Automate. Evolve.
 </h1>
 <div className="flex">
@@ -37,7 +37,7 @@ const MovingDots = () => {
         <Chatbot/>
     </div>
     <div>
-        <Image src="/chatbot.png" alt="chatbot" width={1000} height={1000} className="mt-10  h-[400px]"/>
+        <Image src="/chatbot.png" alt="chatbot" width={1000} height={1000} className="mt-2  h-[400px]"/>
     </div>
 </div>
 
