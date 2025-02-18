@@ -1,175 +1,93 @@
-"use client"
+"use client";
 import { Earth, Github, Linkedin, Mail, Twitter } from "lucide-react";
 import React, { useState } from "react";
 
+interface FormData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  service: string;
+  message: string;
+}
 
-const Contact = () => {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    service: '',
-    message: ''
+const Contact: React.FC = () => {
+  const [formData, setFormData] = useState<FormData>({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    service: "",
+    message: "",
   });
 
-  // Handle input changes with correct type casting
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Handle form submission
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     const { firstName, lastName, email, phone, service, message } = formData;
-    const whatsappMessage = `
-      *Contact Form Submission*
-      
-      Name: ${firstName} ${lastName}
-      Email: ${email}
-      Phone: ${phone}
-      Service: ${service}
-      Message: ${message}
-    `;
-
+    const whatsappMessage = `\n*Contact Form Submission*\n\nName: ${firstName} ${lastName}\nEmail: ${email}\nPhone: ${phone}\nService: ${service}\nMessage: ${message}`;
     const encodedMessage = encodeURIComponent(whatsappMessage.trim());
     const whatsappLink = `https://wa.me/+923162391694?text=${encodedMessage}`;
-
-    // Open WhatsApp with pre-filled message
     window.open(whatsappLink, "_blank");
   };
 
-  // Generate 100 dots with random positions and animation delays
-  const dots = Array.from({ length: 200 }).map(() => ({
-    top: `${Math.random() * 100}%`,
-    left: `${Math.random() * 100}%`,
-    animationDelay: `${Math.random() * 5}s`,
-    animationDuration: `${Math.random() * 10 + 5}s`, // Random duration between 5s and 15s
-  }));
-
   return (
-    <div className="relative  h-screen bg-gradient overflow-hidden w-full md:w-[1170px] mx-auto">
-      {dots.map((dot, i) => (
-        <div
-          key={i}
-          className="dot"
-          style={{
-            top: dot.top,
-            left: dot.left,
-            animationDelay: dot.animationDelay,
-            animationDuration: dot.animationDuration,
-          }}
-        />
-      ))}
-
-      <h1 className="mt-6  mb-6 text-2xl md:text-5xl font-extrabold bg-gradient-to-r from-yellow-400 via-gray-400 to-black bg-clip-text text-transparent text-center">Get in Touch</h1>
-      <p className="text-gray-300 text-md md:text-xl text-center font-semibold">Ready to transform your business with AI?</p>
-      <div className="flex flex-col md:flex-row justify-around">
-        <div>
-          <h2>Contact Information</h2>
-         <div className="flex gap-2 ml-4 md:ml-24">
-          <Mail size={30 } className="text-yellow-400"/>
-         <p className="text-gray-300 text-sm md:text-xl">contact@agenticworld.com</p>
-         </div>
-         <div className="flex gap-2 ml-4 md:ml-24">
-          <Earth size={30 } className="text-yellow-400"/>
-          <p className="text-gray-300 text-sm md:text-xl">www.agentiaworld.com</p>
-         </div>
-         <div className='flex gap-2 mt-4 justify-center'>
-          <Github size={36} fill='gray'/>
-          <Linkedin size={36} fill='gray'/>
-          <Twitter size={36} fill='gray'/>
-
+    <div className="relative mx-auto md:w-[1170px] min-h-screen bg-gradient-to-b from-gray-900 to-black overflow-hidden flex flex-col items-center px-4 md:px-8">
+      <h1 className="mt-10 text-3xl md:text-5xl font-extrabold text-transparent bg-gradient-to-r from-yellow-400 via-gray-400 to-black bg-clip-text text-center">
+        Get in Touch
+      </h1>
+      <p className="text-gray-300 text-md md:text-xl text-center font-semibold mt-2">
+        Ready to transform your business with AI?
+      </p>
+      <div className="flex flex-col md:flex-row justify-between items-center w-full max-w-5xl mt-8 gap-6">
+        <div className="w-full md:w-1/2 text-center md:text-left">
+          <h2 className="text-xl text-gray-300 font-semibold">Contact Information</h2>
+          <div className="mt-4 space-y-3">
+            <div className="flex items-center gap-3">
+              <Mail size={24} className="text-yellow-400" />
+              <p className="text-gray-300 text-sm md:text-lg">contact@agenticworld.com</p>
+            </div>
+            <div className="flex items-center gap-3">
+              <Earth size={24} className="text-yellow-400" />
+              <p className="text-gray-300 text-sm md:text-lg">www.agentiaworld.com</p>
+            </div>
+          </div>
+          <div className="flex gap-4 mt-6 justify-center md:justify-start">
+            <Github size={32} className="text-gray-400 hover:text-white cursor-pointer" />
+            <Linkedin size={32} className="text-gray-400 hover:text-white cursor-pointer" />
+            <Twitter size={32} className="text-gray-400 hover:text-white cursor-pointer" />
+          </div>
         </div>
-       
+        <div className="bg-black rounded-lg p-6 w-full md:w-1/2 shadow-2xl shadow-yellow-400">
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="flex flex-col md:flex-row gap-3">
+              <input type="text" name="firstName" placeholder="First Name" value={formData.firstName} onChange={handleChange} className="w-full bg-black text-white px-4 py-2 border border-gray-700 rounded-md" />
+              <input type="text" name="lastName" placeholder="Last Name" value={formData.lastName} onChange={handleChange} className="w-full bg-black text-white px-4 py-2 border border-gray-700 rounded-md" />
+            </div>
+            <div className="flex flex-col md:flex-row gap-3">
+              <input type="email" name="email" placeholder="Email Address" value={formData.email} onChange={handleChange} className="w-full bg-black text-white px-4 py-2 border border-gray-700 rounded-md" />
+              <input type="text" name="phone" placeholder="Phone Number" value={formData.phone} onChange={handleChange} className="w-full bg-black text-white px-4 py-2 border border-gray-700 rounded-md" />
+            </div>
+            <select name="service" value={formData.service} onChange={handleChange} className="w-full bg-black text-white px-4 py-2 border border-gray-700 rounded-md">
+              <option value="" disabled>
+                Select an option
+              </option>
+              <option value="Neural Networks">Neural Networks</option>
+              <option value="Deep Learning">Deep Learning</option>
+              <option value="Advanced ML">Advanced ML</option>
+              <option value="Global Scale">Global Scale</option>
+            </select>
+            <textarea name="message" value={formData.message} onChange={handleChange} className="w-full bg-black text-white px-4 py-2 border border-gray-700 rounded-md" rows={5} placeholder="Message"></textarea>
+            <button type="submit" className="w-full py-2 bg-yellow-600 hover:bg-yellow-700 transition rounded-md text-white font-bold">
+              Send Message
+            </button>
+          </form>
         </div>
-        <div className="bg-black rounded-lg p-3 sm:p-6 max-w-lg mx-auto mt-2 shadow-2xl shadow-yellow-400">
-  <form onSubmit={handleSubmit} className="mt-6 block w-full">
-    <div className="flex flex-col md:flex-row items-center justify-between gap-3">
-      <input
-        type="text"
-        name="firstName"
-        placeholder="First Name"
-        value={formData.firstName}
-        onChange={handleChange}
-        className="flex-1 bg-black text-white placeholder:text-gray-600 px-4 py-2 
-        rounded-md border border-gray-700 outline-none w-full"
-      />
-      <input
-        type="text"
-        name="lastName"
-        placeholder="Last Name"
-        value={formData.lastName}
-        onChange={handleChange}
-        className="flex-1 bg-black text-white placeholder:text-gray-600 px-4 py-2 
-        rounded-md border border-gray-700 outline-none w-full"
-      />
-    </div>
-    <div className="mt-4 flex flex-col md:flex-row items-center justify-between gap-3">
-      <input
-        type="email"
-        name="email"
-        placeholder="Email address"
-        value={formData.email}
-        onChange={handleChange}
-        className="flex-1 bg-black text-white placeholder:text-gray-600 px-4 py-2 
-        rounded-md border border-gray-700 outline-none w-full"
-      />
-      <input
-        type="text"
-        name="phone"
-        placeholder="Phone Number"
-        value={formData.phone}
-        onChange={handleChange}
-        className="flex-1 bg-black text-white placeholder:text-gray-600 px-4 py-2 
-        rounded-md border border-gray-700 outline-none w-full"
-      />
-    </div>
-    <div>
-      <select
-        name="service"
-        value={formData.service}
-        onChange={handleChange}
-        className="w-full mt-4 bg-black text-white placeholder:text-gray-600 px-4 py-2 
-        rounded-md border border-gray-700 outline-none"
-      >
-        <option value="" disabled>
-          Select an option
-        </option>
-        <option value="frontend">Neural Networks</option>
-        <option value="backend">Deep Learning</option>
-        <option value="fullstack">Advanced ML</option>
-        <option value="fullstack">Global Scale</option>
-      </select>
-    </div>
-    <textarea
-      name="message"
-      value={formData.message}
-      onChange={handleChange}
-      className="w-full mt-4 bg-black text-white placeholder:text-gray-600 px-4 py-2 
-      rounded-md border border-gray-700 outline-none"
-      rows={5}
-      placeholder="Message"
-    />
-    <div className="mt-3">
-      <button
-        type="submit"
-        className="px-6 py-2.5 bg-yellow-600 hover:bg-yellow-700 transition-all
-        duration-150 rounded-full text-white"
-      >
-        Send Message
-      </button>
-    </div>
-  </form>
-</div>
-
       </div>
-      
     </div>
   );
 };
