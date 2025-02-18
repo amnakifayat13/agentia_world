@@ -1,6 +1,7 @@
 import { Github, Linkedin, Twitter } from 'lucide-react'
 import React from 'react'
 
+
 const Footer = () => {
   return (
     <div className='w-full md:w-[1170px] mx-auto h-auto bg-black'>
@@ -40,6 +41,8 @@ const Footer = () => {
     <div className='bg-yellow-700 w-72 md:w-[1100px] mx-auto h-[2px] mt-10'></div>
     <p className='text-gray-300 text-center text-sm mt-6 mb-16'>© 2025 Agentia World. All rights reserved.</p>
     <div className='black w-full md:w-[1170px] mx-auto h-6 '></div>
+   
+
     </div>
   )
 }

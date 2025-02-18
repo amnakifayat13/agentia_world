@@ -2,6 +2,7 @@
 import { Earth, Github, Linkedin, Mail, Twitter } from "lucide-react";
 import React, { useState } from "react";
 
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     firstName: '',
@@ -168,6 +169,7 @@ const Contact = () => {
 </div>
 
       </div>
+      
     </div>
   );
 };

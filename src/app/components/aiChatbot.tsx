@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -26,12 +26,12 @@ export default function Chatbot() {
   };
 
   return (
-    <div className="relative ">
+    <div className="relative">
       {/* Floating Button to Open Chat */}
       {!isOpen && (
         <Button
           onClick={() => setIsOpen(true)}
-          className="bg-yellow-500 text-white p-6 rounded-full shadow-lg fixed bottom-6 ml-6 hover:bg-yellow-600"
+          className=" bottom-10 mr-4 bg-yellow-500 text-white p-6 rounded-full shadow-lg hover:bg-yellow-600"
         >
           Open Chatbot
         </Button>
@@ -39,16 +39,17 @@ export default function Chatbot() {
 
       {/* Chatbot Window */}
       {isOpen && (
-        <div className="max-w-lg mx-auto p-6 bg-gray-900 text-yellow-500 rounded-lg shadow-lg -mt-20 relative">
+        <div className="fixed top-28 left-1/2 transform -translate-x-1/2 w-full max-w-md bg-gray-900 text-yellow-500 rounded-lg shadow-lg p-6">
           {/* Close Button */}
           <button
             onClick={() => setIsOpen(false)}
-            className="absolute top-2 right-2 text-white bg-gray-700 p-1 rounded-full hover:bg-red-600"
+            className="absolute top-2 right-6 text-white bg-gray-700 p-1 rounded-full hover:bg-red-600"
           >
             <X className="h-5 w-5" />
           </button>
-          
+
           <h2 className="text-2xl font-bold text-center mb-4">AI Chatbot</h2>
+
           <div className="h-64 overflow-y-auto space-y-2 p-4 bg-gray-800 rounded-lg">
             {messages.map((msg, index) => (
               <Card
@@ -63,7 +64,9 @@ export default function Chatbot() {
               </Card>
             ))}
           </div>
-          <div className="flex items-center mt-2 mb-6">
+
+          {/* Input Box */}
+          <div className="flex items-center mt-2">
             <Input
               className="flex-1 bg-gray-700 border-none text-white"
               value={input}

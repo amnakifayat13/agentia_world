@@ -34,12 +34,14 @@ const MovingDots = () => {
     <div className=" " >
         <p className="text-gray-600 text-sm md:text-2xl font-bold mt-6 ml-4">AI is transforming businesses by enhancing efficiency, automating processes, and enabling data-driven decision-making.</p>
         <Button className="md:p-8 text-white md:text-xl ml-4 font- mt-6 md:m-16 bg-yellow-500 hover:bg-yellow-600 absolute">Get Started Free Trial</Button>
-        <Chatbot/>
+        
     </div>
     <div>
         <Image src="/chatbot.png" alt="chatbot" width={1000} height={1000} className="mt-2  h-[400px]"/>
     </div>
+   <div className="mt-80"><Chatbot/></div>
 </div>
+
 
 
     </div>
