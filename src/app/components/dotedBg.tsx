@@ -62,7 +62,7 @@ const MovingDots = () => {
       </div>
 
       {/* Chatbot Section */}
-      <div className="w-full flex justify-center -mt-28">
+      <div className="w-full flex justify-center md:-mt-28">
         <Chatbot />
       </div>
     </div>
