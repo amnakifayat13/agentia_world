@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Image from "next/image";
 import React from "react";
 import Chatbot from "./aiChatbot";
@@ -14,7 +14,8 @@ const MovingDots = () => {
   }));
 
   return (
-    <div className="relative  h-screen bg-gradient overflow-hidden w-full md:w-[1170px] mx-auto">
+    <div className="relative mx-auto md:w-[1170px] min-h-screen bg-gradient overflow-hidden w-full flex flex-col items-center px-4 md:px-8">
+      {/* Background Dots */}
       {dots.map((dot, i) => (
         <div
           key={i}
@@ -27,23 +28,43 @@ const MovingDots = () => {
           }}
         />
       ))}
-    <h1 className="mt-24  mb-6 text-2xl md:text-6xl font-extrabold bg-gradient-to-r from-yellow-400 via-gray-400 to-black bg-clip-text text-transparent text-center">
- The Future of Agentic AI ~   Empower. Automate. Evolve.
-</h1>
-<div className="flex">
-    <div className=" " >
-        <p className="text-gray-600 text-sm md:text-2xl font-bold mt-6 ml-4">AI is transforming businesses by enhancing efficiency, automating processes, and enabling data-driven decision-making.</p>
-        <Button className="md:p-8 text-white md:text-xl ml-4 font- mt-6 md:m-16 bg-yellow-500 hover:bg-yellow-600 absolute">Get Started Free Trial</Button>
-        
-    </div>
-    <div>
-        <Image src="/chatbot.png" alt="chatbot" width={1000} height={1000} className="mt-2  h-[400px]"/>
-    </div>
-   <div className="mt-80"><Chatbot/></div>
-</div>
 
+      {/* Heading */}
+      <h1 className="mt-32 text-3xl md:text-6xl font-extrabold bg-gradient-to-r from-yellow-400 via-gray-400 to-black bg-clip-text text-transparent text-center">
+        The Future of Agentic AI ~ Empower. Automate. Evolve.
+      </h1>
 
+      {/* Content Section */}
+      <div className="flex flex-col md:flex-row justify-between items-center w-full max-w-6xl mt-8 gap-8">
+        {/* Left Content */}
+        <div className="text-center md:text-left md:w-1/2">
+          <p className="text-gray-600 text-lg md:text-2xl font-bold">
+            AI is transforming businesses by enhancing efficiency, automating
+            processes, and enabling data-driven decision-making.
+          </p>
+          <div className="mt-6">
+            <Button className="px-6 py-3 md:px-8 md:py-6 text-white text-lg md:text-xl bg-yellow-500 hover:bg-yellow-600">
+              Get Started Free Trial
+            </Button>
+          </div>
+        </div>
 
+        {/* Right Image */}
+        <div className="w-full md:w-1/2 flex justify-center">
+          <Image
+            src="/chatbot.png"
+            alt="chatbot"
+            width={1000}
+            height={1000}
+            className="max-w-full h-auto md:h-[400px]"
+          />
+        </div>
+      </div>
+
+      {/* Chatbot Section */}
+      <div className="w-full flex justify-center -mt-28">
+        <Chatbot />
+      </div>
     </div>
   );
 };
