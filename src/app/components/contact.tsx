@@ -37,7 +37,7 @@ const Contact: React.FC = () => {
 
   return (
     <div className="relative mx-auto md:w-[1170px] min-h-screen bg-gradient-to-b from-gray-900 to-black overflow-hidden flex flex-col items-center px-4 md:px-8">
-      <h1 className="mt-10 text-3xl md:text-5xl font-extrabold text-transparent bg-gradient-to-r from-yellow-400 via-gray-400 to-black bg-clip-text text-center">
+      <h1 className="mt-20 text-3xl md:text-5xl font-extrabold text-transparent bg-gradient-to-r from-yellow-400 via-gray-400 to-black bg-clip-text text-center">
         Get in Touch
       </h1>
       <p className="text-gray-300 text-md md:text-xl text-center font-semibold mt-2">

@@ -5,7 +5,7 @@ import React from 'react'
 const Pricing = () => {
   return (
     <div className="w-full md:w-[1170px] mx-auto px-4 md:px-8 lg:px-12 py-16 bg-black">
-      <h1 className="mb-6 text-2xl md:text-5xl font-extrabold bg-gradient-to-r from-yellow-400 via-gray-400 to-black bg-clip-text text-transparent text-center">
+      <h1 className="mb-6 mt-6 text-2xl md:text-5xl font-extrabold bg-gradient-to-r from-yellow-400 via-gray-400 to-black bg-clip-text text-transparent text-center">
         Choose Your Plan
       </h1>
       <p className="text-gray-300 text-md md:text-xl text-center font-semibold">
